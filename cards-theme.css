@@ -245,3 +245,23 @@
 .fh-brand-modal-footer{margin-top:22px}
 body.fh-brand-modal-open{overflow:hidden}
 @media(max-width:560px){.fh-brand-modal{padding:10px}.fh-brand-modal-dialog{max-height:92vh;padding:20px 16px;border-radius:17px}.fh-brand-modal-head{align-items:flex-start;gap:12px}.fh-brand-modal-head .fh-brand-logo-wrap,.fh-brand-modal-head .fh-brand-logo-placeholder{width:68px;height:68px;min-width:68px}.fh-brand-modal-details{grid-template-columns:1fr}.fh-brand-modal-close{width:38px;height:38px;font-size:27px}}
+
+
+/* Premium brand directory cards: fixed header row, readable details below. */
+.brand-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important;align-items:stretch}
+.brand-grid .fh-brand-card-compact{display:flex!important;flex-direction:column;min-width:0;height:100%;padding:0!important;border:1px solid #e4e9ed!important;border-radius:20px!important;background:#fff!important;box-shadow:0 8px 24px rgba(16,35,58,.06)!important;overflow:hidden;white-space:normal!important;text-align:left!important}
+.brand-grid .fh-brand-card-compact:hover,.brand-grid .fh-brand-card-compact:focus-visible{border-color:#b8d8c8!important;box-shadow:0 16px 34px rgba(16,35,58,.12)!important;transform:translateY(-3px)}
+.brand-grid .fh-brand-card-compact .fh-brand-card-head{display:flex!important;align-items:flex-start!important;gap:16px!important;padding:22px!important;min-height:124px;border-bottom:1px solid #edf0f2;background:linear-gradient(135deg,#f7faf8,#fff)!important}
+.brand-grid .fh-brand-card-compact .fh-brand-logo-wrap,.brand-grid .fh-brand-card-compact .fh-brand-logo-placeholder{flex:0 0 76px!important;width:76px!important;height:76px!important;min-width:76px!important;border-radius:15px!important}
+.brand-grid .fh-brand-card-compact .fh-brand-heading{flex:1;min-width:0;padding-top:2px}
+.brand-grid .fh-brand-card-compact .fh-brand-heading h3{margin:7px 0 0!important;font-size:clamp(19px,1.6vw,23px)!important;line-height:1.2!important;overflow-wrap:anywhere;word-break:normal}
+.brand-grid .fh-brand-card-compact .fh-brand-kicker{font-size:10px!important;line-height:1.45;letter-spacing:.12em}
+.fh-brand-card-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;padding:8px 22px 16px;flex:1}
+.fh-brand-mini-item{min-width:0;padding-top:14px}
+.fh-brand-mini-item span{display:block;margin-bottom:5px;color:#14814f;font-size:10px;line-height:1.4;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.fh-brand-mini-item p{margin:0;color:#526078;font-size:13px;line-height:1.5;overflow-wrap:anywhere;word-break:normal;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.fh-brand-card-prompt{margin:0!important;padding:15px 22px!important;border-top:1px solid #e9edef!important;background:#fbfcfb;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#fff!important;font-size:14px!important;line-height:1.3;font-weight:700;background:#102f50!important}
+.fh-brand-card-prompt span:first-child{min-width:0}
+.fh-brand-card-prompt span:last-child{font-size:20px;flex:0 0 auto}
+@media(max-width:900px){.brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}.brand-grid .fh-brand-card-compact .fh-brand-card-head{gap:13px!important;padding:18px!important}.brand-grid .fh-brand-card-compact .fh-brand-logo-wrap,.brand-grid .fh-brand-card-compact .fh-brand-logo-placeholder{flex-basis:68px!important;width:68px!important;height:68px!important;min-width:68px!important}.fh-brand-card-summary{padding:6px 18px 15px;gap:0 12px}}
+@media(max-width:600px){.brand-grid{grid-template-columns:minmax(0,1fr)!important;gap:16px!important}.brand-grid .fh-brand-card-compact{border-radius:18px!important}.brand-grid .fh-brand-card-compact .fh-brand-card-head{gap:16px!important;padding:18px!important;min-height:0}.brand-grid .fh-brand-card-compact .fh-brand-logo-wrap,.brand-grid .fh-brand-card-compact .fh-brand-logo-placeholder{flex-basis:72px!important;width:72px!important;height:72px!important;min-width:72px!important}.brand-grid .fh-brand-card-compact .fh-brand-heading h3{font-size:21px!important;line-height:1.22!important}.fh-brand-card-summary{grid-template-columns:repeat(2,minmax(0,1fr));padding:5px 18px 17px;gap:0 16px}.fh-brand-mini-item p{font-size:13px}.fh-brand-card-prompt{padding:15px 18px!important}}
