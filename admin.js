@@ -36,9 +36,79 @@ async function signIn(email,password){const msg=$('#loginMessage');msg.textConte
 if(!email||password.length<4){msg.textContent='Enter an email and a password of at least 4 characters for the local demo.';return}
 readLocal();openApp({email:email+' (demo)'});notify('Demo session started. Changes stay in this browser.')}
 async function signOut(){if(hasSupabase&&client){try{await client.auth.signOut()}catch(e){}}session=null;$('#app').classList.add('hidden');$('#loginScreen').classList.remove('hidden');$('#loginPassword').value='';$('#loginMessage').textContent='';}
-async function getRows(section){if(section==='presence'){if(hasSupabase){const {data,error}=await client.from('site_content').select('*').in('section',['domestic','global']).order('sort_order',{ascending:true}).order('created_at',{ascending:false});if(error)throw error;return (data||[]).map(r=>({...r,_sourceSection:r.section,id:r.id,title:r.title,status:r.status||'draft',data:{...(r.data||{}),presence_scope:(r.data||{}).presence_scope|| (r.section==='global'?'International':'Domestic (India)')},sort_order:r.sort_order||0}))}return [...(store.domestic||[]).map(r=>({...r,_sourceSection:'domestic',data:{...(r.data||{}),presence_scope:(r.data||{}).presence_scope||'Domestic (India)'}})),...(store.global||[]).map(r=>({...r,_sourceSection:'global',data:{...(r.data||{}),presence_scope:(r.data||{}).presence_scope||'International'}})].sort((a,b)=>Number(a.data?.sort_order||0)-Number(b.data?.sort_order||0))}if(hasSupabase){if(section==='enquiries'){const {data,error}=await client.from('enquiries').select('*').order('created_at',{ascending:false});if(error)throw error;return (data||[]).map(r=>({...r,id:r.id,title:r.name||r.email||'Website enquiry',status:r.status||'new',data:{name:r.name,email:r.email,phone:r.phone,subject:r.subject,message:r.message,source:r.source,follow_up_notes:r.follow_up_notes,assigned_to:r.assigned_to,created_at:r.created_at}}))}
-const {data,error}=await client.from('site_content').select('*').eq('section',section).order('sort_order',{ascending:true}).order('created_at',{ascending:false});if(error)throw error;return (data||[]).map(r=>({...r,id:r.id,title:r.title,status:r.status||'draft',data:r.data||{},sort_order:r.sort_order||0}))}
-return (store[section]||[]).map(r=>({...r,data:r.data||{}})).sort((a,b)=>(Number(a.data?.sort_order||a.sort_order||0)-Number(b.data?.sort_order||b.sort_order||0)))}
+async function getRows(section) {
+  if (section === 'presence') {
+    if (hasSupabase) {
+      const { data, error } = await client.from('site_content').select('*')
+        .in('section', ['domestic', 'global'])
+        .order('sort_order', { ascending: true })
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(r => ({
+        ...r,
+        _sourceSection: r.section,
+        id: r.id,
+        title: r.title,
+        status: r.status || 'draft',
+        data: {
+          ...(r.data || {}),
+          presence_scope: (r.data || {}).presence_scope || (r.section === 'global' ? 'International' : 'Domestic (India)')
+        },
+        sort_order: r.sort_order || 0
+      }));
+    }
+    return [
+      ...(store.domestic || []).map(r => ({
+        ...r,
+        _sourceSection: 'domestic',
+        data: { ...(r.data || {}), presence_scope: (r.data || {}).presence_scope || 'Domestic (India)' }
+      })),
+      ...(store.global || []).map(r => ({
+        ...r,
+        _sourceSection: 'global',
+        data: { ...(r.data || {}), presence_scope: (r.data || {}).presence_scope || 'International' }
+      }))
+    ].sort((a, b) => Number(a.data?.sort_order || 0) - Number(b.data?.sort_order || 0));
+  }
+  if (hasSupabase) {
+    if (section === 'enquiries') {
+      const { data, error } = await client.from('enquiries').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(r => ({
+        ...r,
+        id: r.id,
+        title: r.name || r.email || 'Website enquiry',
+        status: r.status || 'new',
+        data: {
+          name: r.name,
+          email: r.email,
+          phone: r.phone,
+          subject: r.subject,
+          message: r.message,
+          source: r.source,
+          follow_up_notes: r.follow_up_notes,
+          assigned_to: r.assigned_to,
+          created_at: r.created_at
+        }
+      }));
+    }
+    const { data, error } = await client.from('site_content').select('*')
+      .eq('section', section)
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    return (data || []).map(r => ({
+      ...r,
+      id: r.id,
+      title: r.title,
+      status: r.status || 'draft',
+      data: r.data || {},
+      sort_order: r.sort_order || 0
+    }));
+  }
+  return (store[section] || []).map(r => ({ ...r, data: r.data || {} }))
+    .sort((a, b) => Number(a.data?.sort_order || a.sort_order || 0) - Number(b.data?.sort_order || b.sort_order || 0));
+}
 async function saveRow(section,record){if(section==='presence'){const target=record._sourceSection||(record.data?.presence_scope==='International'?'global':'domestic');const routed={...record,section:target,_sourceSection:target};return saveRow(target,routed)}if(hasSupabase){if(section==='enquiries'){const payload={status:record.status||'new',follow_up_notes:record.data.follow_up_notes||'',assigned_to:record.data.assigned_to||null};const {error}=await client.from('enquiries').update(payload).eq('id',record.id);if(error)throw error;return}
 const payload={section,title:record.title,status:record.status||'draft',data:record.data||{},sort_order:Number(record.data?.sort_order||0),updated_at:new Date().toISOString()};if(record.id&&!String(record.id).startsWith('fh_')){const {error}=await client.from('site_content').update(payload).eq('id',record.id);if(error)throw error}else{const {error}=await client.from('site_content').insert(payload);if(error)throw error}return}
 const arr=store[section]||(store[section]=[]);const row={id:record.id||uid(),title:record.title||'',status:record.status||'draft',data:record.data||{},updated_at:new Date().toISOString()};const ix=arr.findIndex(r=>r.id===record.id);if(ix>=0)arr[ix]=row;else arr.push(row);writeLocal()}
