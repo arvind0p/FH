@@ -9,3 +9,13 @@
 .image-file-input{padding:9px!important;background:#fbfcfe!important}
 .image-preview{display:flex;align-items:center;justify-content:center;min-height:84px;max-width:260px;padding:8px;border:1px dashed #cbd5e1;border-radius:10px;background:#f8fafc;color:#8995a6;font-size:11px;overflow:hidden}
 .image-preview img{display:block;max-width:100%;max-height:180px;object-fit:contain;border-radius:6px}
+
+/* Temporarily locked admin sections */
+.nav-lock{margin-left:auto;flex-shrink:0;padding:3px 5px;border-radius:5px;background:#fff1d6;color:#936216;font-size:8px;font-weight:800;letter-spacing:.35px}
+.nav-item.active .nav-lock{background:#ffe7b4;color:#81520b}
+.nav-item:has(.nav-lock){gap:8px}
+.locked-state{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 20px}
+.locked-state-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:16px;background:#fff3dc;font-size:24px;margin-bottom:15px}
+.locked-state h2{font:800 18px Manrope,sans-serif;color:var(--ink);margin:0 0 8px}
+.locked-state p{max-width:420px;color:var(--muted);font-size:12px;margin:0 0 8px}
+.locked-state small{color:#9a7a43;font-size:11px}
