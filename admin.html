@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Dashboard | Franchise Horizon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-config.js"></script>
+</head>
+<body>
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <a class="brand-lockup" href="index.html"><span class="brand-mark">FH</span><span><b>Franchise Horizon</b><small>ADMIN CONSOLE</small></span></a>
+    <div class="login-copy"><span class="eyebrow">SECURE ACCESS</span><h1>Welcome back.</h1><p>Sign in to manage website content, brands, team members and enquiries.</p></div>
+    <form id="loginForm">
+      <label>Email address<input type="email" id="loginEmail" autocomplete="username" placeholder="admin@yourdomain.com" required></label>
+      <label>Password<input type="password" id="loginPassword" autocomplete="current-password" placeholder="Enter your password" required></label>
+      <button class="btn btn-primary full" type="submit">Sign in to dashboard <span>→</span></button>
+      <p id="loginMessage" class="form-message" role="status"></p>
+    </form>
+    <p class="login-foot">Use an authorized administrator account. Public sign-up is disabled.</p>
+  </div>
+</div>
+<div id="app" class="app-shell hidden">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand-lockup sidebar-brand" href="index.html"><span class="brand-mark">FH</span><span><b>Franchise Horizon</b><small>ADMIN CONSOLE</small></span></a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav id="sideNav" aria-label="Admin sections">
+      <button class="nav-item active" data-section="overview"><span class="nav-icon">▦</span>Overview</button>
+      <div class="nav-label nav-label-spaced">WEBSITE CONTENT</div>
+      <button class="nav-item" data-section="home"><span class="nav-icon">⌂</span>Home Page</button>
+      <button class="nav-item" data-section="about"><span class="nav-icon">▤</span>About Us</button>
+      <button class="nav-item" data-section="brands"><span class="nav-icon">◇</span>Brands Directory <span class="nav-count" id="brandNavCount">0</span></button>
+      <button class="nav-item" data-section="services"><span class="nav-icon">✳</span>Our Expertise</button>
+      <button class="nav-item" data-section="team"><span class="nav-icon">♙</span>Leadership & Team</button>
+      <button class="nav-item" data-section="domestic"><span class="nav-icon">⌖</span>Domestic Presence</button>
+      <button class="nav-item" data-section="global"><span class="nav-icon">◎</span>Global Presence</button>
+      <button class="nav-item" data-section="contact"><span class="nav-icon">✉</span>Contact Details</button>
+      <div class="nav-label nav-label-spaced">GROWTH & SETTINGS</div>
+      <button class="nav-item" data-section="enquiries"><span class="nav-icon">▣</span>Enquiries / Leads <span class="nav-count" id="leadNavCount">0</span></button>
+      <button class="nav-item" data-section="seo"><span class="nav-icon">⌕</span>SEO & Social Links</button>
+      <button class="nav-item" data-section="access"><span class="nav-icon">⚙</span>Access & Data</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="connection-dot" id="connectionDot"></div><div><b id="connectionLabel">Demo mode</b><small id="connectionHint">Browser-only storage</small></div><button id="signOutBtn" class="icon-button" title="Sign out" aria-label="Sign out">↗</button></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><button id="mobileMenu" class="icon-button mobile-menu" aria-label="Open menu">☰</button><div class="breadcrumb"><span>Franchise Horizon</span><b>/</b><strong id="crumbTitle">Overview</strong></div><div class="top-actions"><a href="index.html" target="_blank" rel="noreferrer" class="site-link">View website ↗</a><div class="user-chip"><span class="user-avatar" id="userAvatar">A</span><span><b id="userName">Administrator</b><small>Website admin</small></span></div></div></header>
+    <div class="content-wrap">
+      <div id="toast" class="toast" role="status"></div>
+      <section id="section-overview" class="page-section active">
+        <div class="page-heading"><div><span class="eyebrow">CONTROL CENTRE</span><h1>Good to see you.</h1><p>Manage your website content and enquiries from one place.</p></div><button class="btn btn-primary" data-action="quick-add">＋ Add new content</button></div>
+        <div class="notice" id="modeNotice"><span class="notice-icon">i</span><div><b>Setup status</b><p id="modeNoticeText">Demo mode is active. Connect Supabase to share changes with the live website and other administrators.</p></div><button class="text-button" data-section-link="access">Configure →</button></div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total brands</span><span class="stat-icon blue">◇</span></div><strong id="statBrands">0</strong><small>Directory records</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Website sections</span><span class="stat-icon green">▤</span></div><strong id="statContent">8</strong><small>Managed from this console</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Team members</span><span class="stat-icon amber">♙</span></div><strong id="statTeam">0</strong><small>Leadership profiles</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Open enquiries</span><span class="stat-icon violet">✉</span></div><strong id="statLeads">0</strong><small>Needs follow-up</small></article>
+        </div>
+        <div class="overview-grid">
+          <article class="panel"><div class="panel-heading"><div><h2>Quick actions</h2><p>Common website management tasks</p></div></div><div class="quick-grid">
+            <button class="quick-action" data-quick="brands"><span class="quick-icon blue">◇</span><b>Add a brand</b><small>Create a directory listing</small><span class="quick-arrow">→</span></button>
+            <button class="quick-action" data-quick="team"><span class="quick-icon green">♙</span><b>Add team member</b><small>Update leadership profiles</small><span class="quick-arrow">→</span></button>
+            <button class="quick-action" data-quick="services"><span class="quick-icon amber">✳</span><b>Update a service</b><small>Edit expertise content</small><span class="quick-arrow">→</span></button>
+            <button class="quick-action" data-quick="enquiries"><span class="quick-icon violet">✉</span><b>Review enquiries</b><small>Track follow-ups and outcomes</small><span class="quick-arrow">→</span></button>
+          </div></article>
+          <article class="panel"><div class="panel-heading"><div><h2>Website sections</h2><p>Jump directly to any content area</p></div></div><div id="sectionHealth" class="section-health"></div></article>
+        </div>
+        <article class="panel recent-panel"><div class="panel-heading"><div><h2>Recent enquiries</h2><p>Latest lead activity recorded in this dashboard</p></div><button class="text-button" data-quick="enquiries">View all →</button></div><div id="recentLeads"></div></article>
+      </section>
+      <section id="section-data" class="page-section">
+        <div class="page-heading"><div><span class="eyebrow" id="sectionEyebrow">CONTENT MANAGEMENT</span><h1 id="sectionTitle">Manage content</h1><p id="sectionDescription">Create, edit and publish website content.</p></div><button class="btn btn-primary" id="addRecordBtn">＋ Add new</button></div>
+        <div class="toolbar"><div class="search-box"><span>⌕</span><input type="search" id="recordSearch" placeholder="Search records..." aria-label="Search records"></div><select id="recordStatusFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="published">Published</option><option value="draft">Draft</option><option value="archived">Archived</option><option value="new">New</option><option value="contacted">Contacted</option><option value="follow-up">Follow-up</option><option value="converted">Converted</option><option value="closed">Closed</option></select><button class="btn btn-secondary" id="exportBtn">Export CSV ↓</button></div>
+        <div class="panel table-panel"><div id="recordTable" class="table-wrap"></div><div class="table-footer"><span id="recordCount">0 records</span><span id="recordHint">Changes are saved automatically after you save a record.</span></div></div>
+      </section>
+      <section id="section-access" class="page-section">
+        <div class="page-heading"><div><span class="eyebrow">SYSTEM CONFIGURATION</span><h1>Access & data</h1><p>Connect the dashboard to shared storage and control how data is managed.</p></div></div>
+        <div class="setup-grid">
+          <article class="panel setup-card"><div class="setup-icon">☁</div><h2>Database connection</h2><p>Supabase provides shared database storage and secure administrator authentication. Credentials must be configured in <code>admin-config.js</code>.</p><div class="setup-status" id="dbSetupStatus">Checking configuration…</div><ol><li>Create a Supabase project.</li><li>Run <code>supabase-schema.sql</code> in SQL Editor.</li><li>Add the Project URL and anon key to <code>admin-config.js</code>.</li><li>Create an admin user in Supabase Authentication and add their user ID to <code>admin_users</code>.</li></ol><a class="btn btn-secondary" href="https://supabase.com/dashboard" target="_blank" rel="noreferrer">Open Supabase ↗</a></article>
+          <article class="panel setup-card"><div class="setup-icon">⇧</div><h2>Import / export</h2><p>Keep a backup of your records. Export a section to CSV from its page or export/import a full JSON snapshot here.</p><div class="button-stack"><button class="btn btn-secondary" id="exportAllBtn">Export all data (JSON)</button><label class="btn btn-secondary file-button">Import JSON backup<input type="file" id="importFile" accept="application/json"></label></div><p class="subtle-note">Import replaces local demo data only. In connected mode, data changes should be made through the relevant section.</p></article>
+          <article class="panel setup-card"><div class="setup-icon">◉</div><h2>Current session</h2><p id="sessionDetails">No authenticated administrator session.</p><button class="btn btn-secondary" id="accessSignOut">Sign out</button></article>
+          <article class="panel setup-card"><div class="setup-icon">⚠</div><h2>Before publishing</h2><ul class="checklist"><li>Confirm the correct Supabase project URL and anon key.</li><li>Enable Row Level Security (RLS) using the supplied schema.</li><li>Only grant dashboard access to authorized admin accounts.</li><li>Never put a service-role key in browser code.</li><li>Connect public pages to the same content tables before expecting edits to appear on the live website.</li></ul></article>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<div id="recordModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><div class="modal-head"><div><span class="eyebrow">RECORD DETAILS</span><h2 id="modalTitle">Add record</h2></div><button class="icon-button" data-close-modal aria-label="Close">×</button></div><form id="recordForm"><div id="formFields" class="form-grid"></div><div class="modal-actions"><button type="button" class="btn btn-secondary" data-close-modal>Cancel</button><button type="submit" class="btn btn-primary">Save changes</button></div><p id="recordFormMessage" class="form-message" role="status"></p></form></div></div>
+<div id="confirmModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="confirmTitle"><div class="modal-backdrop" data-close-confirm></div><div class="confirm-card"><h2 id="confirmTitle">Delete this record?</h2><p>This action cannot be undone.</p><div class="modal-actions"><button class="btn btn-secondary" data-close-confirm>Cancel</button><button class="btn btn-danger" id="confirmDeleteBtn">Delete record</button></div></div></div>
+<script src="admin.js"></script>
+</body>
+</html>
