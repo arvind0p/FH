@@ -145,3 +145,31 @@ grant insert on public.enquiries to anon;
 grant select, insert, update, delete on public.enquiries to authenticated;
 
 grant select on public.admin_users to authenticated;
+
+-- Storage bucket for leadership photos, brand logos, and other admin-uploaded images.
+-- Public read is enabled so images can appear on the public website.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'fh-media',
+  'fh-media',
+  true,
+  5242880,
+  array['image/jpeg', 'image/png', 'image/webp']
+)
+on conflict (id) do update
+set public = excluded.public,
+    file_size_limit = excluded.file_size_limit,
+    allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "Public can read FH media" on storage.objects;
+create policy "Public can read FH media"
+  on storage.objects for select
+  to anon, authenticated
+  using (bucket_id = 'fh-media');
+
+drop policy if exists "Admins manage FH media" on storage.objects;
+create policy "Admins manage FH media"
+  on storage.objects for all
+  to authenticated
+  using (bucket_id = 'fh-media' and public.fh_is_admin())
+  with check (bucket_id = 'fh-media' and public.fh_is_admin());
