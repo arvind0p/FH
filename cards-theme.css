@@ -74,3 +74,18 @@
   .dir,.expert,.brand-card,.stat,.step,.why>div,.countries>div,.presence-card,.value-card,.benefit-card,.process-card,.testimonial-card{transition:none}
   .dir:hover,.expert:hover,.brand-card:hover,.stat:hover,.step:hover,.why>div:hover,.countries>div:hover,.presence-card:hover,.value-card:hover,.benefit-card:hover,.process-card:hover,.testimonial-card:hover{transform:none}
 }
+
+/* Founder portrait sizing: balanced against the card and quote on desktop/mobile. */
+.founder img.founder-photo{
+  display:block!important;
+  width:100%!important;
+  max-width:210px!important;
+  height:auto!important;
+  aspect-ratio:4/5!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  margin:0 auto 16px!important;
+}
+@media(max-width:600px){
+  .founder img.founder-photo{max-width:180px!important}
+}
