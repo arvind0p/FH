@@ -136,3 +136,12 @@ create policy "Admins delete enquiries"
 -- values ('PASTE-AUTH-USER-UUID-HERE', 'admin@yourdomain.com', 'owner', true);
 --
 -- Keep the Supabase service_role key private. Browser code must use only the anon/publishable key.
+
+-- Required SQL privileges (RLS policies above still control which rows/actions are allowed).
+grant select on public.site_content to anon, authenticated;
+grant insert, update, delete on public.site_content to authenticated;
+
+grant insert on public.enquiries to anon;
+grant select, insert, update, delete on public.enquiries to authenticated;
+
+grant select on public.admin_users to authenticated;
