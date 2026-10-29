@@ -49,24 +49,13 @@
     <div class="content-wrap">
       <div id="toast" class="toast" role="status"></div>
       <section id="section-overview" class="page-section active">
-        <div class="page-heading"><div><span class="eyebrow">CONTROL CENTRE</span><h1>Good to see you.</h1><p>Manage your website content and enquiries from one place.</p></div><button class="btn btn-primary" data-action="quick-add">＋ Add new content</button></div>
-        <div class="notice" id="modeNotice"><span class="notice-icon">i</span><div><b>Setup status</b><p id="modeNoticeText">Demo mode is active. Connect Supabase to share changes with the live website and other administrators.</p></div><button class="text-button" data-section-link="access">Configure →</button></div>
-        <div class="stat-grid">
-          <article class="stat-card"><div class="stat-top"><span>Total brands</span><span class="stat-icon blue">◇</span></div><strong id="statBrands">0</strong><small>Directory records</small></article>
-          <article class="stat-card"><div class="stat-top"><span>Website sections</span><span class="stat-icon green">▤</span></div><strong id="statContent">8</strong><small>Managed from this console</small></article>
-          <article class="stat-card"><div class="stat-top"><span>Team members</span><span class="stat-icon amber">♙</span></div><strong id="statTeam">0</strong><small>Leadership profiles</small></article>
-          <article class="stat-card"><div class="stat-top"><span>Open enquiries</span><span class="stat-icon violet">✉</span></div><strong id="statLeads">0</strong><small>Needs follow-up</small></article>
-        </div>
-        <div class="overview-grid">
-          <article class="panel"><div class="panel-heading"><div><h2>Quick actions</h2><p>Common website management tasks</p></div></div><div class="quick-grid">
-            <button class="quick-action" data-quick="brands"><span class="quick-icon blue">◇</span><b>Add a brand</b><small>Create a directory listing</small><span class="quick-arrow">→</span></button>
-            <button class="quick-action" data-quick="team"><span class="quick-icon green">♙</span><b>Add team member</b><small>Update leadership profiles</small><span class="quick-arrow">→</span></button>
-            <button class="quick-action" data-quick="services"><span class="quick-icon amber">✳</span><b>Update a service</b><small>Edit expertise content</small><span class="quick-arrow">→</span></button>
-            <button class="quick-action" data-quick="enquiries"><span class="quick-icon violet">✉</span><b>Review enquiries</b><small>Track follow-ups and outcomes</small><span class="quick-arrow">→</span></button>
-          </div></article>
-          <article class="panel"><div class="panel-heading"><div><h2>Website sections</h2><p>Jump directly to any content area</p></div></div><div id="sectionHealth" class="section-health"></div></article>
-        </div>
-        <article class="panel recent-panel"><div class="panel-heading"><div><h2>Recent enquiries</h2><p>Latest lead activity recorded in this dashboard</p></div><button class="text-button" data-quick="enquiries">View all →</button></div><div id="recentLeads"></div></article>
+        <article class="panel recent-panel">
+          <div class="panel-heading">
+            <div><h2>Recent enquiries</h2><p>Latest lead activity recorded in this dashboard</p></div>
+            <button class="text-button" data-quick="enquiries">View all →</button>
+          </div>
+          <div id="recentLeads"></div>
+        </article>
       </section>
       <section id="section-data" class="page-section">
         <div class="page-heading"><div><span class="eyebrow" id="sectionEyebrow">CONTENT MANAGEMENT</span><h1 id="sectionTitle">Manage content</h1><p id="sectionDescription">Create, edit and publish website content.</p></div><button class="btn btn-primary" id="addRecordBtn">＋ Add new</button></div>
