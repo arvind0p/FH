@@ -1,0 +1,22 @@
+/* Shared abstract violet card theme — no text is baked into the background. */
+:root{--card-violet:#3420c8;--card-violet-dark:#2514a2;--card-lavender:#a99cff}
+.dir,.expert,.brand-card,.stat,.step,.why>div,.service-cards>.expert,.countries>div,.founder,.presence-card,.value-card,.benefit-card,.process-card,.testimonial-card{
+  position:relative;
+  overflow:hidden;
+  color:#fff!important;
+  background-color:var(--card-violet-dark)!important;
+  background-image:linear-gradient(105deg,rgba(45,29,181,.26),rgba(39,22,161,.2)),url('cards-bg.svg')!important;
+  background-size:cover!important;
+  background-position:center right!important;
+  border-color:rgba(183,169,255,.55)!important;
+  box-shadow:0 12px 28px rgba(35,20,120,.16);
+}
+.dir b,.dir span,.dir p,.expert b,.expert span,.expert p,.brand-card,.brand-card p,.brand-card strong,.stat b,.stat span,.step b,.step h3,.step p,.why>div,.countries>div,.founder b,.founder span,.founder p,.founder blockquote{
+  color:#fff!important;
+}
+.dir a,.expert a,.brand-card a{color:#fff!important;text-decoration:underline;text-underline-offset:3px}
+.dir:before,.expert:before{background:#c3b7ff!important}
+.dir .member-initials,.dir i,.expert i{color:#2d1bb0!important;background:#f0edff!important}
+.brand-card{min-height:74px}
+.stat,.step,.why>div,.countries>div{border-radius:16px}
+@media(max-width:600px){.dir,.expert,.brand-card,.stat,.step{background-position:58% center!important}}
