@@ -1,22 +1,76 @@
-/* Shared abstract violet card theme — no text is baked into the background. */
-:root{--card-violet:#3420c8;--card-violet-dark:#2514a2;--card-lavender:#a99cff}
+/* Franchise Horizon premium card system.
+   CSS-only surfaces: no raster/SVG background artwork is used on cards. */
+:root{
+  --fh-card-bg:#fffefa;
+  --fh-card-border:#e3e5e9;
+  --fh-card-ink:#101a3a;
+  --fh-card-muted:#55607c;
+  --fh-card-blue:#1a5fa8;
+  --fh-card-green:#14814f;
+  --fh-card-gold:#e8a93a;
+  --fh-card-shadow:0 10px 30px rgba(16,26,58,.07);
+  --fh-card-shadow-hover:0 18px 38px rgba(16,26,58,.12);
+}
 .dir,.expert,.brand-card,.stat,.step,.why>div,.service-cards>.expert,.countries>div,.founder,.presence-card,.value-card,.benefit-card,.process-card,.testimonial-card{
   position:relative;
   overflow:hidden;
-  color:#fff!important;
-  background-color:var(--card-violet-dark)!important;
-  background-image:linear-gradient(105deg,rgba(45,29,181,.26),rgba(39,22,161,.2)),url('cards-bg.svg')!important;
-  background-size:cover!important;
-  background-position:center right!important;
-  border-color:rgba(183,169,255,.55)!important;
-  box-shadow:0 12px 28px rgba(35,20,120,.16);
+  color:var(--fh-card-ink)!important;
+  background-color:var(--fh-card-bg)!important;
+  background-image:none!important;
+  border:1px solid var(--fh-card-border)!important;
+  box-shadow:var(--fh-card-shadow);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
 }
-.dir b,.dir span,.dir p,.expert b,.expert span,.expert p,.brand-card,.brand-card p,.brand-card strong,.stat b,.stat span,.step b,.step h3,.step p,.why>div,.countries>div,.founder b,.founder span,.founder p,.founder blockquote{
-  color:#fff!important;
+.dir:hover,.expert:hover,.brand-card:hover,.stat:hover,.step:hover,.why>div:hover,.countries>div:hover,.presence-card:hover,.value-card:hover,.benefit-card:hover,.process-card:hover,.testimonial-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(20,129,79,.36)!important;
+  box-shadow:var(--fh-card-shadow-hover);
 }
-.dir a,.expert a,.brand-card a{color:#fff!important;text-decoration:underline;text-underline-offset:3px}
-.dir:before,.expert:before{background:#c3b7ff!important}
-.dir .member-initials,.dir i,.expert i{color:#2d1bb0!important;background:#f0edff!important}
-.brand-card{min-height:74px}
-.stat,.step,.why>div,.countries>div{border-radius:16px}
-@media(max-width:600px){.dir,.expert,.brand-card,.stat,.step{background-position:58% center!important}}
+.dir b,.dir span,.dir p,.expert b,.expert span,.expert p,.brand-card,.brand-card p,.brand-card strong,.stat b,.stat span,.step b,.step h3,.step p,.why>div,.countries>div{
+  color:var(--fh-card-ink)!important;
+}
+.dir p,.expert p,.step p,.stat span{color:var(--fh-card-muted)!important}
+.dir a,.expert a,.brand-card a{
+  color:var(--fh-card-blue)!important;
+  text-decoration:underline;
+  text-decoration-color:rgba(26,95,168,.35);
+  text-underline-offset:3px;
+}
+.dir:before,.expert:before{background:var(--fh-card-green)!important}
+.dir .member-initials,.dir i,.expert i{
+  color:var(--fh-card-green)!important;
+  background:#eaf5ee!important;
+  border:1px solid #d4e9dc;
+}
+.brand-card{
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  padding:20px 22px!important;
+  border-radius:14px!important;
+  font-weight:600;
+}
+.stat,.step,.why>div,.countries>div,.presence-card,.value-card,.benefit-card,.process-card,.testimonial-card{
+  border-radius:18px!important;
+}
+.stat b{color:var(--fh-card-blue)!important}
+.step::before{
+  background:var(--fh-card-ink)!important;
+  color:var(--fh-card-gold)!important;
+}
+.step::after{background:repeating-linear-gradient(90deg,#dfe2ea 0 8px,transparent 8px 14px)!important}
+.founder{
+  color:#f6f7fb!important;
+  background-color:var(--fh-card-ink)!important;
+  background-image:none!important;
+  border-color:rgba(20,129,79,.5)!important;
+  box-shadow:0 18px 42px rgba(16,26,58,.16);
+}
+.founder b,.founder span,.founder p,.founder blockquote{color:#f6f7fb!important}
+.founder blockquote{border-left:3px solid var(--fh-card-gold)}
+.founder .founder-photo{border:4px solid rgba(255,255,255,.86);box-shadow:0 8px 24px rgba(0,0,0,.16)}
+.why>div h3,.countries>div h3,.value-card h3,.benefit-card h3,.process-card h3,.testimonial-card h3{color:var(--fh-card-green)}
+@media(prefers-reduced-motion:reduce){
+  .dir,.expert,.brand-card,.stat,.step,.why>div,.countries>div,.presence-card,.value-card,.benefit-card,.process-card,.testimonial-card{transition:none}
+  .dir:hover,.expert:hover,.brand-card:hover,.stat:hover,.step:hover,.why>div:hover,.countries>div:hover,.presence-card:hover,.value-card:hover,.benefit-card:hover,.process-card:hover,.testimonial-card:hover{transform:none}
+}
