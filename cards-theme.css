@@ -89,3 +89,82 @@
 @media(max-width:600px){
   .founder img.founder-photo{max-width:180px!important}
 }
+
+
+/* Franchise Horizon — shared premium inner-page hero system */
+.fh-page-hero{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden;
+  padding:clamp(54px,7vw,92px) 0 clamp(52px,6vw,78px)!important;
+  background:linear-gradient(112deg,#f8f6f0 0%,#f5f4ef 54%,#eef4ef 100%)!important;
+  border-bottom:1px solid rgba(16,26,58,.09);
+}
+.fh-page-hero:before{
+  content:"";position:absolute;z-index:-1;right:-145px;top:-235px;width:650px;height:650px;border-radius:50%;
+  border:1px solid rgba(20,129,79,.14);
+  box-shadow:0 0 0 34px rgba(20,129,79,.025),0 0 0 72px rgba(26,95,168,.025),0 0 0 112px rgba(232,169,58,.025);
+}
+.fh-page-hero:after{
+  content:"";position:absolute;z-index:-1;right:6%;bottom:-145px;width:360px;height:210px;
+  background:radial-gradient(ellipse at center,rgba(232,169,58,.18),rgba(232,169,58,0) 72%);
+  pointer-events:none;
+}
+.fh-hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);align-items:center;gap:clamp(32px,6vw,88px)}
+.fh-hero-copy{max-width:690px}
+.fh-hero-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 19px!important;color:#14814f!important;font:700 11px/1.4 "Instrument Sans",system-ui,sans-serif!important;letter-spacing:.18em;text-transform:uppercase}
+.fh-hero-eyebrow:before{content:"";width:26px;height:2px;background:#e8a93a;border-radius:2px}
+.fh-hero-copy h1{max-width:13ch;font-size:clamp(2.6rem,5.1vw,4.65rem)!important;line-height:1.02!important;letter-spacing:-.045em!important;color:#101a3a!important;font-weight:700}
+.fh-hero-copy h1 em{display:block;margin-top:7px;color:#1a5fa8;font-style:normal}
+.fh-hero-lead{max-width:58ch;margin:22px 0 0!important;color:#55607c!important;font-size:clamp(1rem,1.4vw,1.13rem)!important;line-height:1.8!important}
+.fh-hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:29px}
+.fh-hero-actions a{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:47px;padding:12px 19px;border-radius:999px;text-decoration:none!important;font-size:14px;font-weight:700;transition:transform .2s ease,box-shadow .2s ease}
+.fh-hero-primary{background:#101a3a;color:#fff!important;box-shadow:0 8px 20px rgba(16,26,58,.14)}
+.fh-hero-secondary{color:#101a3a!important;border:1px solid rgba(16,26,58,.17);background:rgba(255,255,255,.52)}
+.fh-hero-actions a:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(16,26,58,.12)}
+.fh-hero-visual{position:relative;min-height:330px;display:grid;place-items:center}
+.fh-hero-orbit{position:relative;width:min(100%,390px);aspect-ratio:1/1;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.88) 0 23%,rgba(255,255,255,.32) 23.5% 40%,rgba(20,129,79,.045) 40.5% 58%,transparent 58.5%);border:1px solid rgba(16,26,58,.09)}
+.fh-hero-orbit:before,.fh-hero-orbit:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(26,95,168,.18);inset:11%;transform:rotate(-26deg) scaleX(.78)}
+.fh-hero-orbit:after{inset:19%;border-color:rgba(20,129,79,.22);transform:rotate(34deg) scaleX(.78)}
+.fh-hero-core{position:relative;z-index:1;width:142px;height:142px;border-radius:35px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#1a5fa8 0 48%,#14814f 49% 100%);box-shadow:0 20px 44px rgba(16,26,58,.2);color:white;transform:rotate(-5deg)}
+.fh-hero-core strong{font:700 47px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:-.07em}
+.fh-hero-core span{font:700 8px/1.5 "Instrument Sans",system-ui,sans-serif;letter-spacing:.16em;margin-top:9px}
+.fh-hero-chip{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;min-width:154px;padding:12px 15px;border:1px solid rgba(16,26,58,.09);border-radius:14px;background:rgba(255,254,250,.94);box-shadow:0 12px 28px rgba(16,26,58,.09);backdrop-filter:blur(8px)}
+.fh-hero-chip:before{content:"";flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:#14814f;box-shadow:0 0 0 4px rgba(20,129,79,.1)}
+.fh-hero-chip span{display:block;color:#55607c;font:600 10px/1.35 "Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.fh-hero-chip b{display:block;margin-top:3px;color:#101a3a;font:700 13px/1.3 "Instrument Sans",system-ui,sans-serif}
+.fh-hero-chip.chip-one{top:13%;left:-2%}
+.fh-hero-chip.chip-two{right:-3%;top:38%}
+.fh-hero-chip.chip-three{left:9%;bottom:8%}
+.fh-hero-footnote{display:flex;align-items:center;gap:9px;margin-top:28px;color:#68718a;font-size:12px;letter-spacing:.04em}
+.fh-hero-footnote:before{content:"";width:24px;height:1px;background:#14814f}
+.fh-page-hero.fh-hero-brands .fh-hero-core{background:linear-gradient(145deg,#101a3a 0 50%,#1a5fa8 51% 100%)}
+.fh-page-hero.fh-hero-expertise .fh-hero-core{background:linear-gradient(145deg,#14814f 0 48%,#101a3a 49% 100%)}
+.fh-page-hero.fh-hero-presence .fh-hero-core{background:linear-gradient(145deg,#1a5fa8 0 48%,#e8a93a 49% 100%)}
+.fh-page-hero.fh-hero-leadership .fh-hero-core{background:linear-gradient(145deg,#101a3a 0 48%,#14814f 49% 100%)}
+.fh-page-hero.fh-hero-contact .fh-hero-core{background:linear-gradient(145deg,#e8a93a 0 48%,#14814f 49% 100%);color:#101a3a}
+@media(max-width:800px){
+ .fh-hero-inner{grid-template-columns:1fr;gap:22px}
+ .fh-hero-copy h1{max-width:15ch}
+ .fh-hero-visual{min-height:275px}
+ .fh-hero-orbit{width:min(82vw,320px)}
+ .fh-hero-core{width:116px;height:116px;border-radius:29px}
+ .fh-hero-core strong{font-size:39px}
+ .fh-hero-chip.chip-one{left:0;top:10%}
+ .fh-hero-chip.chip-two{right:0;top:38%}
+ .fh-hero-chip.chip-three{left:3%;bottom:5%}
+}
+@media(max-width:480px){
+ .fh-page-hero{padding:42px 0 40px!important}
+ .fh-hero-inner{gap:14px}
+ .fh-hero-copy h1{font-size:clamp(2.35rem,11vw,3.1rem)!important}
+ .fh-hero-lead{font-size:15px!important;line-height:1.7!important}
+ .fh-hero-actions{gap:9px;margin-top:22px}
+ .fh-hero-actions a{min-height:44px;padding:11px 15px;font-size:13px}
+ .fh-hero-visual{min-height:245px;margin-top:2px}
+ .fh-hero-orbit{width:min(78vw,285px)}
+ .fh-hero-chip{min-width:132px;padding:9px 11px;border-radius:12px}
+ .fh-hero-chip span{font-size:9px}
+ .fh-hero-chip b{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.fh-hero-actions a{transition:none}}
