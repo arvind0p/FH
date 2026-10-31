@@ -51,3 +51,35 @@ create policy "Admins manage FH media"
   to authenticated
   using (bucket_id = 'fh-media' and public.fh_is_admin())
   with check (bucket_id = 'fh-media' and public.fh_is_admin());
+
+
+-- Leadership & Team: split one shared team collection into three manageable groups.
+-- Existing Founder/Leadership/Team records become Core Team. The company profile
+-- lists these 11 additional names under Our Team; no international team names are
+-- identified in the supplied profile, so International remains available but unseeded.
+update public.site_content
+set data = coalesce(data, '{}'::jsonb) || jsonb_build_object('team_group','Core Team')
+where section='team'
+  and coalesce(data->>'team_group','')=''
+  and coalesce(data->>'member_type','Leadership') in ('Founder','Leadership','Team');
+
+insert into public.site_content (section,title,status,sort_order,data)
+select 'team', seed.title, 'published', seed.sort_order,
+       jsonb_build_object('team_group','National','member_type','National','designation','','photo_url','','bio','')
+from (values
+  ('Kuldeep Simlote', 5),
+  ('Atma Prakash', 6),
+  ('Sanjana Krishnani', 7),
+  ('Anitha K', 8),
+  ('Amit Jain', 9),
+  ('Amit Ojha', 10),
+  ('Shikha Tyagi', 11),
+  ('Himanshu Mishra', 12),
+  ('Shrikant Patekar', 13),
+  ('Chirag Pankhaniya', 14),
+  ('Rahul Chittora', 15)
+) as seed(title, sort_order)
+where not exists (
+  select 1 from public.site_content existing
+  where existing.section='team' and lower(trim(existing.title))=lower(trim(seed.title))
+);
