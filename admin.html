@@ -31,12 +31,14 @@
     <div class="nav-label">CONTENT & OPERATIONS</div>
     <nav id="sideNav" aria-label="Admin sections">
 
-      <div class="nav-label nav-label-spaced">WEBSITE CONTENT</div>
-
+      <div class="nav-label nav-label-spaced">HOME & ABOUT</div>
+      <button class="nav-item" data-section="home_brands"><span class="nav-icon">⌂</span>Home Page Brands</button>
+      <button class="nav-item" data-section="group_companies"><span class="nav-icon">▦</span>Group Companies</button>
+      <div class="nav-label nav-label-spaced">BRAND DIRECTORY</div>
       <button class="nav-item" data-section="brands"><span class="nav-icon">◇</span>Brands <span class="nav-count" id="brandNavCount">0</span></button>
-
+      <div class="nav-label nav-label-spaced">PEOPLE & CONTACT</div>
+      <button class="nav-item" data-section="expert_consultants"><span class="nav-icon">✧</span>Expert Consultants</button>
       <button class="nav-item" data-section="team"><span class="nav-icon">♙</span>Leadership & Team</button>
-
       <button class="nav-item" data-section="contact"><span class="nav-icon">✉</span>Contact Details</button>
       <div class="nav-label nav-label-spaced">GROWTH & SETTINGS</div>
       <button class="nav-item" data-section="enquiries"><span class="nav-icon">▣</span>Enquiries / Leads <span class="nav-count" id="leadNavCount">0</span></button>
@@ -59,7 +61,11 @@
       </section>
       <section id="section-data" class="page-section">
         <div class="page-heading"><div><span class="eyebrow" id="sectionEyebrow">CONTENT MANAGEMENT</span><h1 id="sectionTitle">Manage content</h1><p id="sectionDescription">Create, edit and publish website content.</p></div><button class="btn btn-primary" id="addRecordBtn">＋ Add new</button></div>
-        <div class="toolbar"><div class="search-box"><span>⌕</span><input type="search" id="recordSearch" placeholder="Search records..." aria-label="Search records"></div><select id="recordStatusFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="published">Published</option><option value="draft">Draft</option><option value="archived">Archived</option><option value="new">New</option><option value="contacted">Contacted</option><option value="follow-up">Follow-up</option><option value="converted">Converted</option><option value="closed">Closed</option></select><button class="btn btn-secondary hidden" id="downloadTemplateBtn" type="button">Brands CSV template ↓</button><button class="btn btn-secondary" id="exportBtn">Export CSV ↓</button><label class="btn btn-secondary file-button" id="importCsvLabel">Import CSV ↑<input type="file" id="importCsvSectionFile" accept=".csv,text/csv"></label></div>
+        <div class="toolbar"><div class="search-box"><span>⌕</span><input type="search" id="recordSearch" placeholder="Search records..." aria-label="Search records"></div><select id="recordStatusFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="published">Published</option><option value="draft">Draft</option><option value="archived">Archived</option><option value="new">New</option><option value="contacted">Contacted</option><option value="follow-up">Follow-up</option><option value="converted">Converted</option><option value="closed">Closed</option></select>
+        <select id="recordCategoryFilter" aria-label="Filter by category" hidden><option value="">All categories</option></select>
+        <select id="recordLocationFilter" aria-label="Filter by target location" hidden><option value="">All locations</option></select>
+        <select id="recordInvestmentFilter" aria-label="Filter by investment" hidden><option value="">All investment ranges</option></select>
+        <button class="btn btn-secondary hidden" id="downloadTemplateBtn" type="button">Brands CSV template ↓</button><button class="btn btn-secondary" id="exportBtn">Export CSV ↓</button><label class="btn btn-secondary file-button" id="importCsvLabel">Import CSV ↑<input type="file" id="importCsvSectionFile" accept=".csv,text/csv"></label></div>
         <div class="panel table-panel"><div id="recordTable" class="table-wrap"></div><div class="table-footer"><span id="recordCount">0 records</span><span id="recordHint">Changes are saved automatically after you save a record.</span></div></div>
       </section>
       <section id="section-access" class="page-section">
