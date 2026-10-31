@@ -382,3 +382,26 @@ body.fh-brand-modal-open{overflow:hidden}
 @media(max-width:480px){
   .fh-page-hero.fh-hero-expertise .fh-hero-core.fh-hero-core-logo{width:174px!important;height:92px!important}
 }
+
+
+/* Our Presence hero: use the same original Franchise Horizon wordmark. */
+.fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo{
+  width:232px!important;height:120px!important;min-width:0!important;
+  border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;transform:none!important;
+  display:grid!important;place-items:center!important;overflow:visible!important;
+}
+.fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo:before{
+  content:""!important;display:block!important;width:100%!important;height:100%!important;
+  background-image:url("assets/franchise-horizon-hero.webp")!important;
+  background-repeat:no-repeat!important;background-position:center!important;
+  background-size:contain!important;
+}
+.fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo strong,
+.fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo span{display:none!important}
+@media(max-width:800px){
+  .fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo{width:198px!important;height:104px!important}
+}
+@media(max-width:480px){
+  .fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo{width:174px!important;height:92px!important}
+}
