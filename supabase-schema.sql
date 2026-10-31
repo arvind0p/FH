@@ -13,7 +13,7 @@ create table if not exists public.admin_users (
 
 create table if not exists public.site_content (
   id uuid primary key default gen_random_uuid(),
-  section text not null check (section in ('home','about','brands','services','team','domestic','global','contact','seo')),
+  section text not null check (section in ('home','about','home_brands','group_companies','brands','services','team','expert_consultants','domestic','global','contact','seo')),
   title text not null,
   status text not null default 'draft' check (status in ('published','draft','archived')),
   sort_order integer not null default 0,
@@ -35,6 +35,19 @@ create table if not exists public.enquiries (
   follow_up_notes text not null default '',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
+);
+
+insert into public.site_content (section, title, status, sort_order, data)
+select 'home_brands', seed.title, 'published', seed.sort_order,
+       jsonb_build_object('description', '', 'logo_url', '', 'website_url', '')
+from (values
+  ('Chamak', 1), ('Legacy of Bhojraj', 2), ('MBH', 3),
+  ('Bhatter Silver', 4), ('Just Mats', 5), ('Casa Dei Bambini', 6),
+  ('So Southy', 7)
+) as seed(title, sort_order)
+where not exists (
+  select 1 from public.site_content existing
+  where existing.section='home_brands' and lower(existing.title)=lower(seed.title)
 );
 
 create index if not exists site_content_section_status_order_idx
