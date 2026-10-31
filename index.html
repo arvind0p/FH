@@ -109,6 +109,24 @@ footer a{text-decoration:none}footer a:hover{color:var(--blue)}
 }
 @media (max-width:600px){section{padding:68px 0}.hero{padding-top:112px}.brand-grid,.steps{grid-template-columns:1fr}.logo img{width:128px}.nav-r .btn{display:none}.c1{left:-6px}.c2{right:-6px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.horizon .out,.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* homepage content additions */
+.eyebrow{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--green);margin:0 0 14px}
+.home-intro .lead{max-width:88ch}
+.home-brands{grid-template-columns:repeat(4,minmax(0,1fr))}
+.home-brands .brand-card{justify-content:flex-start;min-height:88px}
+.home-capabilities,.home-sectors{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.home-capabilities span,.home-sectors span{display:inline-flex;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.92rem;font-weight:500}
+.home-capabilities span:nth-child(3n+1){border-color:var(--blue)}
+.home-capabilities span:nth-child(3n+2){border-color:var(--green)}
+.home-subhead{margin-top:42px}
+.home-advantages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.home-advantages>div{padding:24px;border:1px solid var(--line);border-top:4px solid var(--green);border-radius:18px;background:var(--surface)}
+.home-advantages>div:nth-child(even){border-top-color:var(--blue)}
+.home-advantages h3{font-size:1.08rem;margin-bottom:8px}
+.home-advantages p{font-size:.94rem;color:var(--muted)}
+@media(max-width:980px){.home-brands{grid-template-columns:repeat(2,minmax(0,1fr))}.home-advantages{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.home-brands,.home-advantages{grid-template-columns:1fr}}
 </style>
 <noscript><style>.rv,.horizon .out{opacity:1;transform:none}</style></noscript>
 <link rel="stylesheet" href="cards-theme.css">
@@ -126,13 +144,13 @@ footer a{text-decoration:none}footer a:hover{color:var(--blue)}
 <section class="hero"><div class="wrap">
  <div class="hero-grid">
   <div>
-   <span class="pill"><i></i>Franchise &amp; business consultancy</span>
+   <span class="pill"><i></i>Franchise &amp; Business Consultancy</span>
    <h1>You dream.<span>We execute.</span></h1>
-   <p class="sub">Franchise Horizon, formed in 2020, helps brands expand through franchising and supports investors in identifying suitable business opportunities.</p>
+   <p class="sub">Franchise Horizon is a franchise and business consultancy, helping brands expand through franchisees and other growth methods while helping investors identify suitable business opportunities.</p>
    <div class="cta"><a class="btn btn-p" href="contact.html">Book a consultation</a><a class="btn btn-g" href="services.html">Explore our expertise</a></div>
   </div>
   <div class="hero-card">
-   <img src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon logo" width="900" height="409">
+   <img src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon" width="900" height="409">
    <div class="chip c1">Since 2020<small>Franchise consulting</small></div>
    <div class="chip c2">35+ cities<small>12+ countries</small></div>
   </div>
@@ -150,28 +168,72 @@ footer a{text-decoration:none}footer a:hover{color:var(--blue)}
  <div class="stat"><b data-n="2020" data-p="1">2020</b><span>Year founded</span></div>
  <div class="stat"><b data-n="35" data-s="+">35+</b><span>Cities across India</span></div>
  <div class="stat"><b data-n="12" data-s="+">12+</b><span>Countries</span></div>
- <div class="stat"><b data-n="16">16</b><span>Core expertise areas</span></div>
+ <div class="stat"><b data-n="20" data-s="+">20+</b><span>Years of founder experience</span></div>
 </div></div>
 
-<section><div class="wrap">
- <h2 class="rv">Brands on board</h2>
- <p class="lead rv">Featured partner brands, in the order specified for the homepage.</p>
- <div class="brand-grid home-brands rv">
-  <div class="brand-card"><em>BS</em>Bhatter Silver</div>
-  <div class="brand-card"><em>C</em>Chamak</div>
-  <div class="brand-card"><em>LB</em>Legacy of Bhojraj</div>
-  <div class="brand-card"><em>MB</em>Multi Brand Hub</div>
-  <div class="brand-card"><em>DC</em>Dabriwal Courier</div>
-  <div class="brand-card"><em>RK</em>Rubina Kazi Salon &amp; Academy</div>
-  <div class="brand-card"><em>CB</em>Casa Dei Bambini</div>
-  <div class="brand-card"><em>FP</em>The Fusion Pizza &amp; The Burger Co</div>
-  <div class="brand-card"><em>JM</em>Just Mats</div>
- </div>
- <a class="more" href="brands.html">Explore all listed brands</a>
+<section><div class="wrap home-intro">
+ <p class="eyebrow">About Franchise Horizon</p>
+ <h2 class="rv">One platform for franchise and business growth</h2>
+ <p class="lead rv">Franchise Horizon, earlier known as Franchise Nations, was formed in 2020 by bringing together members from different parts of the country to create a unified platform for offering their services. Today, the company has a presence in more than 35 cities across India and 12 countries.</p>
+ <p class="lead rv">We help companies and brands expand through franchisees and other expansion methods. Our work includes developing business models, brand marketing and promotion, creating brand identities, identifying potential investors and facilitating deal finalisation. We also help prospective investors identify suitable business opportunities through investor profiling.</p>
 </div></section>
 
 <section class="alt"><div class="wrap">
- <h2 class="rv">How we work</h2>
+ <p class="eyebrow">Our partner brands</p>
+ <h2 class="rv">Brands on board</h2>
+ <p class="lead rv">A selection of brands featured by Franchise Horizon.</p>
+ <div class="brand-grid home-brands rv">
+  <div class="brand-card"><em>C</em>Chamak</div>
+  <div class="brand-card"><em>LB</em>Legacy of Bhojraj</div>
+  <div class="brand-card"><em>MBH</em>MBH</div>
+  <div class="brand-card"><em>BS</em>Bhatter Silver</div>
+  <div class="brand-card"><em>JM</em>Just Mats</div>
+  <div class="brand-card"><em>CB</em>Casa Dei Bambini</div>
+  <div class="brand-card"><em>SS</em>So Southy</div>
+ </div>
+ <a class="more" href="brands.html">Explore all brands</a>
+</div></section>
+
+<section><div class="wrap">
+ <p class="eyebrow">Our expertise</p>
+ <h2 class="rv">Comprehensive business expansion capabilities</h2>
+ <p class="lead rv">Our capabilities span franchise and business consulting, investor profiling, brand development, marketing, research, training and business operations.</p>
+ <div class="home-capabilities rv">
+  <span>Franchise &amp; Business Consulting</span><span>Investors’ Profiling</span><span>Brand Communication &amp; Marketing</span><span>Licensing</span>
+  <span>Data Re-Imagination</span><span>Industrial Consulting</span><span>Process Development &amp; Training</span><span>International Trade</span>
+  <span>Customer Experience</span><span>Merger &amp; Acquisition</span><span>Brand Strategy</span><span>Strategy and Turnaround</span>
+  <span>Market Research</span><span>Restructuring Business Operations</span><span>Intellectual Property Rights</span><span>Supply Chain Management</span>
+  <span>Digital Marketing</span><span>Legal</span><span>ERP Process</span><span>E-Commerce</span><span>Leasing</span><span>Business Resell</span><span>Business Leadership</span>
+ </div>
+ <h3 class="home-subhead">Industries we work in</h3>
+ <div class="home-sectors rv">
+  <span>Health &amp; Wellness</span><span>Food &amp; Beverage</span><span>Education</span><span>Corporate &amp; Personalized Gifting</span>
+  <span>Mining</span><span>Sleep Products</span><span>Retail</span><span>Designer Boutique</span><span>Home Décor</span>
+  <span>Pet Grooming</span><span>Home Furnishing</span><span>Automobiles</span><span>Electric Vehicle</span><span>Cafe</span>
+  <span>Pathology</span><span>Professional Services</span><span>Industrial Products</span>
+ </div>
+ <a class="more" href="services.html">View our expertise</a>
+</div></section>
+
+<section class="alt"><div class="wrap">
+ <p class="eyebrow">The FH Advantage</p>
+ <h2 class="rv">Why choose Franchise Horizon</h2>
+ <div class="home-advantages rv">
+  <div><h3>Extensive network</h3><p>A network spanning key cities nationwide.</p></div>
+  <div><h3>Experienced team</h3><p>Expertise in franchise development, brand development, marketing strategy and entrepreneur development.</p></div>
+  <div><h3>Comprehensive solutions</h3><p>Solutions covering different aspects of business expansion and development.</p></div>
+  <div><h3>Systematic selection</h3><p>A methodical approach to selecting potential franchisees for specific brands.</p></div>
+  <div><h3>Low onboarding costs</h3><p>A cost-effective onboarding process for brands entering franchising.</p></div>
+  <div><h3>360-degree solution</h3><p>Support across the entire franchising model.</p></div>
+  <div><h3>Dedicated marketing team</h3><p>Organised marketing spend and dedicated marketing support.</p></div>
+  <div><h3>Regional teams</h3><p>Teams serving respective geographical locations.</p></div>
+  <div><h3>Accountability</h3><p>Clear responsibility through the business expansion process.</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <p class="eyebrow">How we work</p>
+ <h2 class="rv">From franchise model to franchisee appointment</h2>
  <div class="steps rv">
   <div class="step"><h3>Franchise Module</h3><p>Developing the franchise model and business framework.</p></div>
   <div class="step"><h3>Brand Building &amp; Marketing</h3><p>Building brand presence and marketing activity.</p></div>
