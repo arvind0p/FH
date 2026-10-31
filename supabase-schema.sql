@@ -13,7 +13,7 @@ create table if not exists public.admin_users (
 
 create table if not exists public.site_content (
   id uuid primary key default gen_random_uuid(),
-  section text not null check (section in ('home','about','home_brands','group_companies','brands','consulting_partners','services','team','expert_consultants','domestic','global','contact','seo')),
+  section text not null check (section in ('home','about','home_brands','brands_on_board','group_companies','brands','consulting_partners','services','team','expert_consultants','domestic','global','contact','seo')),
   title text not null,
   status text not null default 'draft' check (status in ('published','draft','archived')),
   sort_order integer not null default 0,
