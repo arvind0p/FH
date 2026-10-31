@@ -7,10 +7,11 @@ alter table public.site_content
 alter table public.site_content
   add constraint site_content_section_check
   check (section in (
-    'home','about','home_brands','group_companies','brands',
-    'services','team','expert_consultants','domestic','global',
-    'contact','seo'
+    'home','about','home_brands','group_companies','brands','consulting_partners',
+    'services','team','expert_consultants','domestic','global','contact','seo'
   ));
+
+
 
 -- Seed the seven existing homepage brand labels so they can be managed immediately.
 insert into public.site_content (section, title, status, sort_order, data)
