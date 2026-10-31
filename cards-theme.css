@@ -451,3 +451,26 @@ body.fh-brand-modal-open{overflow:hidden}
 @media(max-width:480px){
   .fh-page-hero.fh-hero-contact .fh-hero-core.fh-hero-core-logo{width:174px!important;height:92px!important}
 }
+
+
+/* Reliable original logo rendering for every inner-page hero. */
+.fh-page-hero .fh-hero-core.fh-hero-core-logo{
+  background:transparent!important;
+  background-image:none!important;
+}
+.fh-page-hero .fh-hero-core.fh-hero-core-logo:before{
+  content:none!important;
+  display:none!important;
+  background-image:none!important;
+}
+.fh-page-hero .fh-hero-core.fh-hero-core-logo .fh-hero-logo-img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:0!important;
+  margin:0!important;
+}
