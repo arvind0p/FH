@@ -130,6 +130,12 @@ footer a{text-decoration:none}footer a:hover{color:var(--blue)}
 </style>
 <noscript><style>.rv,.horizon .out{opacity:1;transform:none}</style></noscript>
 <link rel="stylesheet" href="cards-theme.css">
+<style>
+.home-brand-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:150px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:center}.home-brand-card img{max-width:100%;width:150px;height:62px;object-fit:contain}.home-brand-card strong,.home-brand-card a{font-weight:700;color:var(--ink);text-decoration:none}.home-brand-card p{font-size:.88rem;color:var(--muted);font-weight:400;margin:0}.home-brand-initial{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:#eef4f8;color:var(--blue);font-weight:800}
+</style>
+<style>
+.home-brand-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:150px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:center}.home-brand-card img{max-width:100%;width:150px;height:62px;object-fit:contain}.home-brand-card strong,.home-brand-card a{font-weight:700;color:var(--ink);text-decoration:none}.home-brand-card p{font-size:.88rem;color:var(--muted);font-weight:400;margin:0}.home-brand-initial{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:#eef4f8;color:var(--blue);font-weight:800}
+</style>
 </head>
 <body id="top">
 <header><div class="wrap nav">
@@ -182,7 +188,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--blue)}
  <p class="eyebrow">Our partner brands</p>
  <h2 class="rv">Brands on board</h2>
  <p class="lead rv">A selection of brands featured by Franchise Horizon.</p>
- <div class="brand-grid home-brands rv">
+ <div class="brand-grid home-brands rv" id="home-brand-grid" aria-live="polite">
   <div class="brand-card"><em>C</em>Chamak</div>
   <div class="brand-card"><em>LB</em>Legacy of Bhojraj</div>
   <div class="brand-card"><em>MBH</em>MBH</div>
