@@ -135,13 +135,16 @@ footer a{text-decoration:none}footer a:hover{color:var(--blue)}
 </style>
 <style>
 .home-brand-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:150px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:center}.home-brand-card img{max-width:100%;width:150px;height:62px;object-fit:contain}.home-brand-card strong,.home-brand-card a{font-weight:700;color:var(--ink);text-decoration:none}.home-brand-card p{font-size:.88rem;color:var(--muted);font-weight:400;margin:0}.home-brand-initial{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:#eef4f8;color:var(--blue);font-weight:800}
+
+/* Current page indicator */
+header nav a[aria-current="page"]{color:#10264f;font-weight:800;position:relative}header nav a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:3px;border-radius:3px;background:linear-gradient(90deg,#1265b0,#078b55)}header nav a[aria-current="page"]:focus-visible{outline:2px solid #1265b0;outline-offset:5px;border-radius:3px}
 </style>
 </head>
 <body id="top">
 <header><div class="wrap nav">
  <a class="logo" href="index.html" aria-label="Franchise Horizon home"><img src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon" width="150" height="68"></a>
  <nav aria-label="Main"><ul id="links">
-  <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="brands.html">Brands</a></li><li><a href="services.html">Our Expertise</a></li><li><a href="presence.html">Our Presence</a></li><li><a href="team.html">Expert Consultants</a></li><li><a href="contact.html">Contact Us</a></li>
+  <li><a href="index.html" aria-current="page">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="brands.html">Brands</a></li><li><a href="services.html">Our Expertise</a></li><li><a href="presence.html">Our Presence</a></li><li><a href="team.html">Expert Consultants</a></li><li><a href="contact.html">Contact Us</a></li>
  </ul></nav>
  <div class="nav-r"><a class="btn btn-g btn-sm" href="admin.html">Login as Admin</a><button id="menu" aria-label="Open menu" aria-expanded="false">&#9776;</button></div>
 </div></header>
