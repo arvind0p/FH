@@ -165,8 +165,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .fh-advantage-check{flex:0 0 42px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#219b70;color:#fff;font:700 1.45rem/1 "Instrument Sans",sans-serif}
 .fh-advantage-item h3{font:500 clamp(1rem,1.6vw,1.3rem)/1.3 "Instrument Sans",sans-serif;letter-spacing:-.02em}
 @media(max-width:650px){.fh-advantage-grid{grid-template-columns:1fr;gap:12px;margin-top:26px}.fh-advantage-item{min-height:82px;padding:18px}.fh-advantage-check{flex-basis:38px;width:38px;height:38px}}
+#fh-group-companies{padding:64px 0}#fh-group-companies[hidden]{display:none!important}.fh-group-companies-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}.fh-group-company-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#fff;min-height:180px}.fh-group-company-card img{max-width:190px;max-height:76px;object-fit:contain}.fh-group-company-card p{color:var(--muted);font-size:.95rem;line-height:1.6}.fh-group-company-card a{color:var(--blue);font-weight:700;text-decoration:none}@media(max-width:760px){.fh-group-companies-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fh-group-companies-grid{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="cards-theme.css?v=fh-founder-intro-20261031">
+<link rel="stylesheet" href="cards-theme.css?v=fh-group-companies-20261031">
 </head><body id="top"><header><div class="wrap nav"><a class="logo" href="index.html" aria-label="Franchise Horizon home"><img src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon"></a><nav aria-label="Main"><ul id="links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="brands.html">Brands</a></li><li><a href="services.html">Our Expertise</a></li><li><a href="presence.html">Our Presence</a></li><li><a href="team.html">Expert Consultants</a></li><li><a href="contact.html">Contact Us</a></li></ul></nav><div class="nav-r"><a class="btn btn-p" href="contact.html">Let’s talk</a><button id="menu" aria-label="Open menu" aria-expanded="false">☰</button></div></div></header><main><section class="fh-page-hero fh-hero-about"><div class="wrap fh-hero-inner"><div class="fh-hero-copy"><p class="fh-hero-eyebrow">About Franchise Horizon</p><h1>Built for business growth.<em>Designed for expansion.</em></h1><p class="fh-hero-lead">Since 2020, Franchise Horizon has brought businesses, brands and professionals together to support franchise development, business expansion and investor opportunities.</p><div class="fh-hero-actions"><a class="fh-hero-primary" href="services.html">Explore our expertise <span aria-hidden="true">↗</span></a><a class="fh-hero-secondary" href="contact.html">Meet our team</a></div><p class="fh-hero-footnote">A connected platform for ambitious businesses</p></div><div class="fh-hero-visual" aria-hidden="true"><div class="fh-hero-orbit"><div class="fh-hero-core fh-hero-core-logo"><img class="fh-hero-logo-img" src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon"></div><div class="fh-hero-chip chip-one"><div><span>Established</span><b>Since 2020</b></div></div><div class="fh-hero-chip chip-two"><div><span>Network</span><b>35+ cities</b></div></div><div class="fh-hero-chip chip-three"><div><span>Reach</span><b>12+ countries</b></div></div></div></div></div></section><section class="fh-founder-intro" aria-labelledby="fh-founder-name">
 <div class="wrap fh-founder-layout">
 <article class="fh-founder-card">
@@ -188,7 +189,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <div class="fh-advantage-item"><span class="fh-advantage-check" aria-hidden="true">✓</span><h3>Organised marketing spend</h3></div>
 <div class="fh-advantage-item"><span class="fh-advantage-check" aria-hidden="true">✓</span><h3>Regional teams serving respective geographical locations</h3></div>
 <div class="fh-advantage-item"><span class="fh-advantage-check" aria-hidden="true">✓</span><h3>Accountability</h3></div>
-</div></div></section></main><footer><div class="wrap"><div class="footer-brand"><a href="#top" aria-label="Franchise Horizon home"><img src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon"></a><span>© 2026 Franchise Horizon</span></div><span>A unit of Vertex Growth Consulting LLP (AD–3782)</span></div></footer><script>
+</div></div></section>
+<section id="fh-group-companies" class="alt" hidden>
+ <div class="wrap">
+  <p class="fh-advantage-kicker">Our group</p>
+  <h2>Group Companies</h2>
+  <div id="fh-group-companies-grid" class="fh-group-companies-grid" aria-live="polite"></div>
+ </div>
+</section>
+</main><footer><div class="wrap"><div class="footer-brand"><a href="#top" aria-label="Franchise Horizon home"><img src="assets/franchise-horizon-hero.webp" alt="Franchise Horizon"></a><span>© 2026 Franchise Horizon</span></div><span>A unit of Vertex Growth Consulting LLP (AD–3782)</span></div></footer><script>
 var menu=document.getElementById('menu'),links=document.getElementById('links');
 if(menu&&links){menu.onclick=function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)};links.onclick=function(e){if(e.target.closest('a'))links.classList.remove('open')}}
 var bs=document.getElementById('brand-search'),bi=document.getElementById('brand-industry');
