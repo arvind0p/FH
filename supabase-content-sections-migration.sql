@@ -7,7 +7,7 @@ alter table public.site_content
 alter table public.site_content
   add constraint site_content_section_check
   check (section in (
-    'home','about','home_brands','group_companies','brands','consulting_partners',
+    'home','about','home_brands','brands_on_board','group_companies','brands','consulting_partners',
     'services','team','expert_consultants','domestic','global','contact','seo'
   ));
 
