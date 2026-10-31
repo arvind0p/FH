@@ -474,3 +474,16 @@ body.fh-brand-modal-open{overflow:hidden}
   padding:0!important;
   margin:0!important;
 }
+
+
+/* Remove the legacy miniature FH mark underneath the original hero logo.
+   The page-specific SVG background rules have higher specificity, so reset each page explicitly. */
+.fh-page-hero.fh-hero-about .fh-hero-core.fh-hero-core-logo,
+.fh-page-hero.fh-hero-brands .fh-hero-core.fh-hero-core-logo,
+.fh-page-hero.fh-hero-expertise .fh-hero-core.fh-hero-core-logo,
+.fh-page-hero.fh-hero-presence .fh-hero-core.fh-hero-core-logo,
+.fh-page-hero.fh-hero-leadership .fh-hero-core.fh-hero-core-logo,
+.fh-page-hero.fh-hero-contact .fh-hero-core.fh-hero-core-logo{
+  background-image:none!important;
+  background-color:transparent!important;
+}
