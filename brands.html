@@ -177,8 +177,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   var grid=document.getElementById("brand-grid");
   var count=document.getElementById("brand-count");
   if(!search||!industry||!locationFilter||!investment||!grid||!count)return;
-  locationFilter.closest("label").hidden=true;
-  investment.closest("label").hidden=true;
   function sync(){
     var cards=Array.from(grid.querySelectorAll(".brand-card"));
     var q=search.value.trim().toLocaleLowerCase();
@@ -187,13 +185,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     cards.forEach(function(card){
       var matchesText=!q||card.textContent.toLocaleLowerCase().includes(q);
       var matchesCategory=!category||card.dataset.category===category;
-      card.hidden=!(matchesText&&matchesCategory);
+      var matchesLocation=!locationFilter.value||card.dataset.location===locationFilter.value;
+      var matchesInvestment=!investment.value||card.dataset.investment===investment.value;
+      card.hidden=!(matchesText&&matchesCategory&&matchesLocation&&matchesInvestment);
       if(!card.hidden)visible++;
     });
     count.textContent="Showing "+visible+" of "+cards.length+" published brands";
   }
   search.addEventListener("input",sync);
   industry.addEventListener("change",sync);
+  locationFilter.addEventListener("change",sync);
+  investment.addEventListener("change",sync);
   var observer=new MutationObserver(function(){sync();});
   observer.observe(grid,{childList:true,subtree:true});
   sync();
