@@ -54,6 +54,9 @@
 .table-panel{padding:0}
 .data-table th{background:#f7f9fc;color:#718096;padding:13px 12px}
 .data-table td{padding:15px 12px;font-size:12px}
+/* Keep uploaded brand and consultant images contained inside admin table rows. */
+.brand-table-logo{display:inline-block;width:64px;height:48px;max-width:64px;max-height:48px;object-fit:contain;object-position:center;vertical-align:middle;margin:0 10px 0 0;padding:3px;background:#fff;border:1px solid var(--line);border-radius:7px;flex:0 0 auto}
+
 .data-table tbody tr:hover{background:#f9fbfe}
 .search-box,.toolbar select,.field-input,.field-select,.field-textarea{border-radius:10px}
 .search-box input{font-size:13px}
