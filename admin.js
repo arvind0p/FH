@@ -7,7 +7,7 @@
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const CFG=window.FH_ADMIN_CONFIG||{};
 const hasSupabase=!!(window.supabase&&CFG.url&&CFG.anonKey&&!String(CFG.url).includes('YOUR_')&&!String(CFG.anonKey).includes('YOUR_'));
-let client=null,session=null,currentSection='brands',editingId=null,deleteTarget=null,toastTimer=null;
+let client=null,publicReadClient=null,session=null,currentSection='brands',editingId=null,deleteTarget=null,toastTimer=null;
 const STORAGE_KEY='fh_admin_dashboard_v1';
 const lockedSections=new Set(['home','about','seo']);
 const labels={home:'Home Page',about:'About Us',home_brands:'Home Page Brands',brands_on_board:'Brands on Board',group_companies:'Group Companies',brands:'Brands Directory',consulting_partners:'Consulting Partners',services:'Our Expertise',team:'Leadership & Team',expert_consultants:'Expert Consultants',presence:'Our Presence',contact:'Contact Details',seo:'SEO & Social Links',enquiries:'Enquiries / Leads'};
@@ -41,6 +41,22 @@ async function signIn(email,password){const msg=$('#loginMessage');msg.textConte
 if(!email||password.length<4){msg.textContent='Enter an email and a password of at least 4 characters for the local demo.';return}
 readLocal();openApp({email:email+' (demo)'});notify('Demo session started. Changes stay in this browser.')}
 async function signOut(){if(hasSupabase&&client){try{await client.auth.signOut()}catch(e){}}session=null;$('#app').classList.add('hidden');$('#loginScreen').classList.remove('hidden');$('#loginPassword').value='';$('#loginMessage').textContent='';}
+function getPublicReadClient(){
+  if(!publicReadClient){
+    publicReadClient=window.supabase.createClient(CFG.url,CFG.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'fh_public_read_only'}
+    });
+  }
+  return publicReadClient;
+}
+async function getPublishedFallback(section){
+  const reader=getPublicReadClient();
+  const {data,error}=await reader.from('site_content').select('*')
+    .eq('section',section).eq('status','published')
+    .order('sort_order',{ascending:true}).order('created_at',{ascending:false});
+  if(error)throw error;
+  return (data||[]).map(r=>({...r,id:r.id,title:r.title,status:r.status||'published',data:r.data||{},sort_order:r.sort_order||0}));
+}
 async function getRows(section) {
   if (section === 'presence') {
     if (hasSupabase) {
@@ -49,7 +65,16 @@ async function getRows(section) {
         .order('sort_order', { ascending: true })
         .order('created_at', { ascending: false });
       if (error) throw error;
-      return (data || []).map(r => ({
+      let rows=data||[];
+      if(!rows.length){
+        const reader=getPublicReadClient();
+        const {data:fallback,error:fallbackError}=await reader.from('site_content').select('*')
+          .in('section',['domestic','global']).eq('status','published')
+          .order('sort_order',{ascending:true}).order('created_at',{ascending:false});
+        if(fallbackError)throw fallbackError;
+        rows=fallback||[];
+      }
+      return rows.map(r => ({
         ...r,
         _sourceSection: r.section,
         id: r.id,
@@ -102,7 +127,12 @@ async function getRows(section) {
       .order('sort_order', { ascending: true })
       .order('created_at', { ascending: false });
     if (error) throw error;
-    return (data || []).map(r => ({
+    if (!data || data.length === 0) {
+      // Public pages can read published rows. Use that same read policy as a
+      // read-only fallback if the authenticated dashboard query returns none.
+      return await getPublishedFallback(section);
+    }
+    return data.map(r => ({
       ...r,
       id: r.id,
       title: r.title,
