@@ -42,6 +42,30 @@ nav a:hover{color:var(--ink)}nav a:hover::after{width:100%}
 #menu{display:none;background:none;border:0;font-size:1.7rem;color:var(--ink);cursor:pointer}
 /* hero */
 .hero{padding:136px 0 0;position:relative;overflow:hidden;background:radial-gradient(900px 500px at 85% 10%,rgba(11,74,160,.10),transparent 60%),radial-gradient(700px 420px at 0% 60%,rgba(10,143,58,.10),transparent 60%),var(--bg)}
+
+/* Compact homepage hero so the key statistics sit directly beneath it in the first desktop viewport */
+@media(min-width:981px){
+ .hero{padding-top:76px}
+ .hero-grid{gap:40px}
+ .hero h1{font-size:clamp(3rem,5.1vw,4.7rem);margin-top:14px}
+ .hero p.sub{font-size:1.02rem;margin:16px 0 20px}
+ .hero-card{padding:26px 24px;border-radius:26px}
+ .hero-card::before{inset:-12px -12px 12px 12px;border-radius:30px}
+ .horizon{height:58px;margin-top:2px}
+ .stats .wrap{min-height:128px}
+ .stat{padding:20px 20px}
+ .stat b{font-size:clamp(2rem,3.2vw,2.8rem)}
+}
+@media(min-width:981px) and (max-height:780px){
+ .hero{padding-top:54px}
+ .hero-grid{gap:30px}
+ .hero h1{font-size:clamp(2.8rem,4.7vw,4.2rem)}
+ .hero-card{padding:20px}
+ .horizon{height:42px}
+ .stats .wrap{min-height:112px}
+ .stat{padding-top:16px;padding-bottom:16px}
+}
+
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
 .pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.9rem;font-weight:500;color:var(--muted)}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--glow);box-shadow:0 0 0 4px rgba(43,196,106,.2)}
