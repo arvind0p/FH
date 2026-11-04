@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://franchisehorizon.in/</loc><priority>1.0</priority></url>
-  <url><loc>https://franchisehorizon.in/about.html</loc><priority>0.8</priority></url>
-  <url><loc>https://franchisehorizon.in/brands.html</loc><priority>0.8</priority></url>
-  <url><loc>https://franchisehorizon.in/services.html</loc><priority>0.8</priority></url>
-  <url><loc>https://franchisehorizon.in/presence.html</loc><priority>0.7</priority></url>
-  <url><loc>https://franchisehorizon.in/team.html</loc><priority>0.7</priority></url>
-  <url><loc>https://franchisehorizon.in/contact.html</loc><priority>0.7</priority></url>
+  <url><loc>https://franchisehorizon.in/about/</loc><priority>0.8</priority></url>
+  <url><loc>https://franchisehorizon.in/brands/</loc><priority>0.8</priority></url>
+  <url><loc>https://franchisehorizon.in/services/</loc><priority>0.8</priority></url>
+  <url><loc>https://franchisehorizon.in/presence/</loc><priority>0.7</priority></url>
+  <url><loc>https://franchisehorizon.in/team/</loc><priority>0.7</priority></url>
+  <url><loc>https://franchisehorizon.in/contact/</loc><priority>0.7</priority></url>
 </urlset>
