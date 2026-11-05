@@ -6,7 +6,7 @@ if(!window.supabase||!cfg.url||!cfg.anonKey||String(cfg.url).includes('YOUR_')||
 const db=window.supabase.createClient(cfg.url,cfg.anonKey);
 const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl=v=>{try{const u=new URL(v,location.href);return ['https:','http:','mailto:','tel:'].includes(u.protocol)?u.href:'#'}catch(e){return '#'}};
-const pathParts=location.pathname.replace(/\\/+$/,'').split('/');
+const pathParts=location.pathname.replace(/\/+$/,'').split('/');
 const page=(pathParts[pathParts.length-1]||'index.html').toLowerCase();
 const map={'index':'home','index.html':'home','':'home','about':'about','about.html':'about','brands':'brands','brands.html':'brands','services':'services','services.html':'services','team':'team','team.html':'team','presence':'presence','presence.html':'presence','domestic-presence':'domestic','domestic-presence.html':'domestic','global-presence':'global','global-presence.html':'global','contact':'contact','contact.html':'contact'};
 async function rows(section){if(section==='presence'){const [domestic,global]=await Promise.all([rows('domestic'),rows('global')]);return [...domestic.map(r=>({...r,_sourceSection:'domestic'})),...global.map(r=>({...r,_sourceSection:'global'}))]}const {data,error}=await db.from('site_content').select('id,section,title,status,sort_order,data').eq('section',section).ilike('status','published').order('sort_order',{ascending:true});if(error)throw error;return data||[]}
