@@ -57,7 +57,7 @@ function renderPresenceTeam(list){
   if(!core||!national)return;
   const ordered=[...list].sort((a,b)=>(Number(a.sort_order??a.data?.sort_order)||999)-(Number(b.sort_order??b.data?.sort_order)||999));
   const groupOf=r=>{const d=r.data||{};return d.team_group||(['Founder','Leadership','Team'].includes(d.member_type||'Leadership')?'Core Team':(d.member_type==='International'?'International':'National'))};
-  const card=r=>{const d=r.data||{},role=String(d.designation||'').trim(),region=(role.match(/\b(East|North|South|West)\b/i)||[])[1]||'',photo=d.photo_url&&safeUrl(d.photo_url)!=='#'?'<img src="'+esc(safeUrl(d.photo_url))+'" alt="'+esc(r.title)+'" loading="lazy">':'';return '<article class="team-card">'+photo+(region?'<span>'+esc(region)+'</span>':'')+'<h3>'+esc(r.title)+'</h3>'+(role?'<p>'+esc(role)+'</p>':'')+'</article>'};
+  const card=r=>{const d=r.data||{},role=String(d.designation||'').trim(),region=(role.match(/\b(East|North|South|West)\b/i)||[])[1]||'',photoUrl=d.photo_url||d.profile_photo_url||d.profile_image_url||d.image_url||d.photo||d.image||'',photo=photoUrl&&safeUrl(photoUrl)!=='#'?'<img src="'+esc(safeUrl(photoUrl))+'" alt="'+esc(r.title)+'" loading="lazy">':'';return '<article class="team-card">'+photo+(region?'<span>'+esc(region)+'</span>':'')+'<h3>'+esc(r.title)+'</h3>'+(role?'<p>'+esc(role)+'</p>':'')+'</article>'};
   const coreMembers=ordered.filter(r=>groupOf(r)==='Core Team');
   const nationalMembers=ordered.filter(r=>groupOf(r)==='National');
   core.innerHTML=coreMembers.length?coreMembers.map(card).join(''):'<p class="lead">Core Team profiles will be published here soon.</p>';
